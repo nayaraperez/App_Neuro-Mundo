@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Comunidad de Apoyo</title>
+    <meta name="author" content="Neu Industries">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- ENCABEZADO FIJO -->
+        <header class="app-header">
+            <div class="header-top">
+            </div>
+            <div class="header-main">
+                <div class="app-brand">
+                    <div class="logo-wrapper">
+<img src="../images/Logo empresa.png" alt="Logo Oficial NeuroMundo" class="logo-app" loading="eager">
+                        <span class="online-pulse-dot" title="Ecosistema Activo"></span>
+                    </div>
+                    <div class="brand-text">
+                        <h1>Muro de la Comunidad</h1>
+                        <span class="brand-badge">CLINICAL & SUPPORT</span>
+                    </div>
+                </div>
+                <div class="app-right-brand">
+                    <!-- Conmutador de Modo Oscuro/Claro -->
+                    <button class="theme-toggle-animated" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema visual" title="Cambiar tema">
+                        <div class="icon-container">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </div>
+                        <span id="theme-text" class="btn-caption">Tema</span>
+                    </button>
+<!-- Conmutador Modo PC / Tablet -->
+<button class="view-toggle-btn" id="view-toggle" onclick="toggleViewMode()" aria-label="Cambiar a vista de escritorio" title="Alternar Layout">
+    <span class="view-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6h16v12H4V6zm2 2v8h12V8H6zm-4 4h2v2H2v-2zm18 0h2v2h-2v-2zM4 4h16V2H4v2zm0 16h16v-2H4v2z"/>
+        </svg>
+    </span>
+</button>
+
+                    <!-- Menú Desplegable Accesible de Notificaciones -->
+                    <div class="user-menu">
+                        <input type="checkbox" id="notif-check" class="notif-checkbox" aria-label="Desplegar notificaciones">
+                        <label for="notif-check" class="notification-btn" aria-label="Abrir centro de notificaciones" tabindex="0">
+                            <span class="bell-icon">🔔</span>
+                            <span class="badge" aria-label="Nueva notificación activa"></span>
+                        </label>
+                        <div class="user-menu-dropdown" role="region" aria-label="Panel de avisos">
+                            <div class="dropdown-header">
+                                <h5>Centro de Notificaciones</h5>
+                                <span class="notif-count">1 nueva</span>
+                            </div>
+                            <div class="menu-item unread">
+                                <span class="notif-icon">🌟</span>
+                                <div class="notif-text">
+                                    <strong>Nueva rutina visual agregada</strong>
+                                    <p>Técnicas de relajación táctil añadidas a Terapia.</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-footer">
+                                <button class="btn-link">Marcar todas como leídas</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="app-content">
+
+            <!-- CAJA PARA CREAR PUBLICACIÓN -->
+            <!-- CREADOR DE PUBLICACIONES -->
+<section class="post-creator-box">
+  <div class="creator-input-row">
+    <span class="user-avatar-badge">👤</span>
+    <input type="text" id="reddit-post-input" placeholder="Crear una publicación o consulta..." />
+  </div>
+
+  <!-- Vista previa de la foto capturada/seleccionada -->
+  <div id="image-preview-container" class="preview-container" style="display: none;">
+    <img id="image-preview" src="" alt="Vista previa de imagen" />
+    <button type="button" class="btn-remove-img" onclick="removerFoto()" title="Quitar imagen">✕</button>
+  </div>
+
+  <!-- Input nativo para cámara (móvil/webcam) y archivos -->
+  <input type="file" id="foto-input" accept="image/*" capture="environment" style="display: none;" onchange="procesarFoto(event)" />
+
+  <div class="creator-actions">
+    <div class="creator-tools">
+      <button type="button" class="tool-btn" onclick="document.getElementById('foto-input').click()">
+        📷 Foto / Cámara
+      </button>
+      <select id="post-category-select" class="tool-select">
+        <option value="r/Consejos">🏷️ r/Consejos</option>
+        <option value="r/RegulacionSensorial">🏷️ r/RegulacionSensorial</option>
+        <option value="r/ComunicacionAAC">🏷️ r/ComunicacionAAC</option>
+        <option value="r/Escolar">🏷️ r/Escolar</option>
+      </select>
+    </div>
+    <button type="button" class="btn-publish" onclick="crearPublicacionReddit()">Publicar</button>
+  </div>
+</section>
+
+<!-- FILTROS DE CONTENIDO -->
+<div class="feed-filters">
+  <button class="filter-chip active" onclick="cambiarFiltro(this)">🔥 Tendencias</button>
+  <button class="filter-chip" onclick="cambiarFiltro(this)">✨ Nuevos</button>
+  <button class="filter-chip" onclick="cambiarFiltro(this)">🏆 Destacados</button>
+</div>
+
+<!-- CONTENEDOR DEL FEED -->
+<div id="posts-feed"></div>
+
+            
+
+            <!-- CONTENEDOR DE PUBLICACIONES -->
+            <div id="posts-feed">
+
+                <!-- ESCENARIO 1: Sobrecarga Sensorial en Público -->
+                <article class="reddit-post-card">
+                    <div class="vote-sidebar">
+                        <button class="vote-btn upvote" onclick="votar(this, 1)">▲</button>
+                        <span class="vote-count">38</span>
+                        <button class="vote-btn downvote" onclick="votar(this, -1)">▼</button>
+                    </div>
+                    <div class="post-main-content">
+                        <div class="post-header-meta">
+                            <span class="community-tag">r/RegulacionSensorial</span>
+                            <span class="meta-dot">•</span>
+                            <span class="post-author">u/MamadeSanti</span>
+                            <span class="post-time">Hace 1 hora</span>
+                        </div>
+
+                        <h3 class="reddit-post-title">Colapso en el supermercado y mucha frustración</h3>
+                        <p class="reddit-post-body">Hola. Hoy fuimos al supermercado y mi hijo de 6 años se tiró al
+                            suelo a gritar y patear cerca de las cajas. Sentí muchísimo miedo y vergüenza por cómo nos
+                            miraba la gente. Pensé que me estaba haciendo un berrinche para que le comprara un dulce,
+                            así que me enojé, lo regañé y lo saqué a la fuerza. Llegamos a casa exhaustos y llorando los
+                            dos. No sé cómo quitarle esa maña.</p>
+
+                        <details class="comments-dropdown">
+                            <summary class="reddit-action-btn">
+                                💬 <span class="comment-count">1</span> Respuesta de apoyo
+                            </summary>
+                            <div class="reddit-comments-thread">
+                                <div class="comment-item">
+                                    <strong>u/Carla_Apoyo:</strong> Uff, te entiendo perfectamente porque a mí me pasó
+                                    exactamente lo mismo al principio y también sentí muchísima vergüenza, pero créeme
+                                    que no es una maña ni un berrinche, sino que el pobre se saturó con tanta luz, ruido
+                                    y gente. Lo que a mí me sirvió para que no me vuelva a pasar fue empezar a hacer
+                                    compras cortas a horas donde no hay casi nadie y llevarlo siempre con sus audífonos
+                                    para el ruido o su juguete favorito para distraerlo; pero si de verdad le da la
+                                    crisis ahí mismo, lo mejor que puedes hacer es olvidarte de la gente que mira feo,
+                                    no perder el control regañándolo porque en ese momento ni te escucha, y simplemente
+                                    agarrarlo con amor, llevarlo al auto o a un sitio solo y quedarte a su lado
+                                    abrazándolo o acompañándolo en silencio hasta que se le pase el colapso.
+                                </div>
+                                <div class="comment-input-box">
+                                    <input type="text" placeholder="Escribe un comentario..."
+                                        onkeypress="agregarComentario(event, this)">
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                <!-- ESCENARIO 2: Barreras de Comunicación y Autolesión -->
+                <article class="reddit-post-card">
+                    <div class="vote-sidebar">
+                        <button class="vote-btn upvote" onclick="votar(this, 1)">▲</button>
+                        <span class="vote-count">42</span>
+                        <button class="vote-btn downvote" onclick="votar(this, -1)">▼</button>
+                    </div>
+                    <div class="post-main-content">
+                        <div class="post-header-meta">
+                            <span class="community-tag tag-preguntas">r/ComunicacionAAC</span>
+                            <span class="meta-dot">•</span>
+                            <span class="post-author">u/Desesperada_2026</span>
+                            <span class="post-time">Hace 3 horas</span>
+                        </div>
+
+                        <h3 class="reddit-post-title">No logra comunicarse y se lastima la mano</h3>
+                        <p class="reddit-post-body">Estoy desesperada. Mi hija de 4 años no habla y lleva toda la tarde
+                            mordiéndose la mano y empujándome hacia la cocina. Me da miedo que se haga daño o que esto
+                            se vuelva su forma de reaccionar siempre. Intenté adivinar qué quería dándole comida, pero
+                            se frustró más y me lanzó un vaso. Siento que no logro conectar con ella y me da pánico que
+                            nunca podamos comunicarnos.</p>
+
+                        <details class="comments-dropdown">
+                            <summary class="reddit-action-btn">
+                                💬 <span class="comment-count">1</span> Respuesta de apoyo
+                            </summary>
+                            <div class="reddit-comments-thread">
+                                <div class="comment-item">
+                                    <strong>u/TerapiaOcupacional_Ana:</strong> Sé lo feo que se siente esa desesperación
+                                    y ver que se lastima, pero piensa que ella solo está desesperada por no poder
+                                    decirte algo tan simple como que tiene sed. A mí me salvó la vida pegar fotos de la
+                                    comida, el agua y la leche en la puerta del refrigerador a la altura de mi hijo para
+                                    prevenir esos momentos, y lo que te recomiendo hacer hoy que pase de nuevo es no
+                                    ponerte a adivinar como loca, sino llevarla de la mano hasta donde están las fotos,
+                                    guiarle suavemente el dedito para que toque la imagen del agua, dársela enseguida y
+                                    decirle 'mira, agua', para que así vaya entendiendo que mostrándote la foto le vas a
+                                    dar lo que necesita sin necesidad de morderse.
+                                </div>
+                                <div class="comment-input-box">
+                                    <input type="text" placeholder="Escribe un comentario..."
+                                        onkeypress="agregarComentario(event, this)">
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                <!-- ESCENARIO 3: Estimulación y Estigmatización (Stimming) -->
+                <article class="reddit-post-card">
+                    <div class="vote-sidebar">
+                        <button class="vote-btn upvote" onclick="votar(this, 1)">▲</button>
+                        <span class="vote-count">29</span>
+                        <button class="vote-btn downvote" onclick="votar(this, -1)">▼</button>
+                    </div>
+                    <div class="post-main-content">
+                        <div class="post-header-meta">
+                            <span class="community-tag">r/EspaciosSeguros</span>
+                            <span class="meta-dot">•</span>
+                            <span class="post-author">u/PapaDeMateo</span>
+                            <span class="post-time">Hace 5 horas</span>
+                        </div>
+
+                        <h3 class="reddit-post-title">Aleteo en la sala de espera del doctor</h3>
+                        <p class="reddit-post-body">Le tocó vacuna a mi hijo de 5 años. En la sala de espera empezó a
+                            caminar en círculos y a aletear muy fuerte con las manos. Me dio miedo que la gente pensara
+                            que está mal o que se saliera de control, así que le agarré las manos con fuerza y le dije
+                            que se quedara quieto. Se puso rígido, empezó a llorar desconsoladamente y no dejamos que el
+                            doctor lo revisara. ¿Cómo le quito esos movimientos tan raros?</p>
+
+                        <details class="comments-dropdown">
+                            <summary class="reddit-action-btn">
+                                💬 <span class="comment-count">1</span> Respuesta de apoyo
+                            </summary>
+                            <div class="reddit-comments-thread">
+                                <div class="comment-item">
+                                    <strong>u/Lorena_Neurologia:</strong> Te entiendo el susto y la pena con los demás,
+                                    pero agarrarle las manos es lo peor que podemos hacer porque ese aleteo es su forma
+                                    de sacar todo el estrés y el miedo que siente de estar ahí. Lo que me enseñaron a mí
+                                    para prevenir ese pánico antes de salir de casa es dibujarle en una hojita la
+                                    secuencia de lo que va a pasar, tipo el auto, la sala de espera, el doctor y luego
+                                    la casa, para que él ya sepa qué viene y no esté tan asustado; y ya estando en la
+                                    sala de espera, de verdad no le frenes las manos ni te preocupes por lo que piense
+                                    la gente, déjalo aletear tranquilo porque así es como su propio cuerpo se calma solo
+                                    para poder entrar con el doctor.
+                                </div>
+                                <div class="comment-input-box">
+                                    <input type="text" placeholder="Escribe un comentario..."
+                                        onkeypress="agregarComentario(event, this)">
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                <!-- ESCENARIO 4: Selectividad Alimentaria -->
+                <article class="reddit-post-card">
+                    <div class="vote-sidebar">
+                        <button class="vote-btn upvote" onclick="votar(this, 1)">▲</button>
+                        <span class="vote-count">51</span>
+                        <button class="vote-btn downvote" onclick="votar(this, -1)">▼</button>
+                    </div>
+                    <div class="post-main-content">
+                        <div class="post-header-meta">
+                            <span class="community-tag">r/LogrosDiarios</span>
+                            <span class="meta-dot">•</span>
+                            <span class="post-author">u/NutriConsejosMama</span>
+                            <span class="post-time">Hace 8 horas</span>
+                        </div>
+
+                        <h3 class="reddit-post-title">¡Un mes jugando con la comida y hay avances!</h3>
+                        <p class="reddit-post-body">Hola a todos. Les cuento mi caso por si a alguien le sirve. Mi hijo
+                            tiene 8 años y su alimentación es súper limitada. Come pan, fideos, yogurt y manzana. Si
+                            intento darle algo nuevo hace arcadas y no hay caso. La nutricionista nos recomendó no
+                            forzarlo y trabajar primero la parte sensorial. Empezamos a 'jugar' con la comida sin
+                            presión: tocar fideos crudos, oler verduras, pintar con yogurt. La idea era que se
+                            familiarizara. Llevamos un mes así. Ayer por primera vez probó una papa frita solo. No come
+                            variado aún, pero al menos ya no hay llanto en la mesa. Para nosotros eso ya es un avance
+                            enorme.</p>
+
+                        <details class="comments-dropdown">
+                            <summary class="reddit-action-btn">
+                                💬 <span class="comment-count">1</span> Respuesta de apoyo
+                            </summary>
+                            <div class="reddit-comments-thread">
+                                <div class="comment-item">
+                                    <strong>u/Sofia_R:</strong> Leí tu comentario y se me ocurrió intentar lo mismo con
+                                    mi hija. Llevamos 2 semanas haciendo la parte sensorial sin obligarla a comer y nos
+                                    ha funcionado bastante bien. Todavía no come de todo, pero ya no hay tanto rechazo
+                                    ni llanto en la mesa. Gracias por el dato, de verdad ayuda saber que no somos los
+                                    únicos.
+                                </div>
+                                <div class="comment-input-box">
+                                    <input type="text" placeholder="Escribe un comentario..."
+                                        onkeypress="agregarComentario(event, this)">
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                <!-- ESCENARIO 5: Sueño y Rutinas -->
+                <article class="reddit-post-card">
+                    <div class="vote-sidebar">
+                        <button class="vote-btn upvote" onclick="votar(this, 1)">▲</button>
+                        <span class="vote-count">33</span>
+                        <button class="vote-btn downvote" onclick="votar(this, -1)">▼</button>
+                    </div>
+                    <div class="post-main-content">
+                        <div class="post-header-meta">
+                            <span class="community-tag tag-preguntas">r/RutinasYSueño</span>
+                            <span class="meta-dot">•</span>
+                            <span class="post-author">u/PapaAgotado</span>
+                            <span class="post-time">Hace 12 horas</span>
+                        </div>
+
+                        <h3 class="reddit-post-title">¿A alguien le volvió a fallar el reloj de luz?</h3>
+                        <p class="reddit-post-body">Hola a todos. Les cuento porque ya no sabía qué hacer. Mi hijo de 4
+                            años se despertaba entre 3 y 4am todos los días con mucha energía y no se dormía más hasta
+                            las 7. Yo estaba agotada. Fuimos al neurólogo y nos recomendó rutina fija: baño, cuento y
+                            luz baja siempre a la misma hora. Nada de pantallas 1 hora antes. Además compramos una luz
+                            nocturna con reloj que cambia de color cuando ya se puede levantar. Llevamos 3 semanas y nos
+                            ha funcionado bastante bien. Ahora se despierta 1 o 2 veces por semana en vez de todos los
+                            días. Quería preguntarles, ¿a alguien más le funcionó esto por un tiempo y después volvió a
+                            despertarse? Me da miedo que cuando le deje de funcionar no sepa qué más hacer.</p>
+
+                        <details class="comments-dropdown">
+                            <summary class="reddit-action-btn">
+                                💬 <span class="comment-count">1</span> Respuesta de apoyo
+                            </summary>
+                            <div class="reddit-comments-thread">
+                                <div class="comment-item">
+                                    <strong>u/Valeria_G:</strong> Te entiendo, pasamos por lo mismo con mi hijo de 5. La
+                                    rutina y la luz del reloj nos ayudaron harto las primeras semanas, pero después
+                                    volvió a despertarse. Lo que nos sirvió fue agregar una siesta corta en el día y
+                                    quitarle cualquier jugo o chocolate después de las 5pm. No es perfecto, hay noches
+                                    que igual se despierta, pero bajó mucho. Ánimo, es de prueba y error. Si quieres te
+                                    paso el modelo de luz que usamos nosotros.
+                                </div>
+                                <div class="comment-input-box">
+                                    <input type="text" placeholder="Escribe un comentario..."
+                                        onkeypress="agregarComentario(event, this)">
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+                <!-- ESCENARIO 6: Transición de Pantallas -->
+                <article class="reddit-post-card">
+                    <div class="vote-sidebar">
+                        <button class="vote-btn upvote" onclick="votar(this, 1)">▲</button>
+                        <span class="vote-count">64</span>
+                        <button class="vote-btn downvote" onclick="votar(this, -1)">▼</button>
+                    </div>
+                    <div class="post-main-content">
+                        <div class="post-header-meta">
+                            <span class="community-tag">r/Consejos</span>
+                            <span class="meta-dot">•</span>
+                            <span class="post-author">u/Beatriz_Familia</span>
+                            <span class="post-time">Hace 1 día</span>
+                        </div>
+
+                        <h3 class="reddit-post-title">Manejo de la tablet sin llegar al berrinche</h3>
+                        <p class="reddit-post-body">Les comparto algo que nos pasaba en casa. Mi hijo de 7 años se
+                            obsesiona con la tablet. Cuando teníamos que quitársela para cenar o dormir eran gritos y
+                            mucho enojo. Yo terminaba cediendo para evitar la pelea. La psicóloga nos dijo que el
+                            problema era quitarla de golpe. Ahora usamos avisos y un horario. 20 min antes le digo 'ya
+                            te quedan 20 min', luego '10 min' y pongo un reloj. Cuando suena le damos 2 opciones:
+                            '¿guardas tú la tablet o la guardo yo?'. No es perfecto. Hay días que igual le cuesta
+                            soltarla. Pero los berrinches bajaron bastante. Siento que al darle un poco de control y
+                            avisarle antes, entiende mejor que no es un castigo.</p>
+
+                        <details class="comments-dropdown">
+                            <summary class="reddit-action-btn">
+                                💬 <span class="comment-count">1</span> Respuesta de apoyo
+                            </summary>
+                            <div class="reddit-comments-thread">
+                                <div class="comment-item">
+                                    <strong>u/Mariana_Chile:</strong> Gracias por compartir esto. Me hizo sentir tan
+                                    acompañada. Pensé que solo me pasaba a mí y que era mala mamá por ceder. Saber que a
+                                    otros también les cuesta me alivia un montón no estar sola en esto.
+                                </div>
+                                <div class="comment-input-box">
+                                    <input type="text" placeholder="Escribe un comentario..."
+                                        onkeypress="agregarComentario(event, this)">
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </article>
+
+            </div>
+
+            <div class="scroll-spacing"></div>
+        </main>
+
+        <!-- NAVEGACIÓN -->
+        <nav class="app-nav">
+            <a href="../../index.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Inicio</span>
+            </a>
+            <a href="proyecto.html" class="nav-item">
+                <span class="nav-icon">🚀</span>
+                <span class="nav-label">Proyecto</span>
+            </a>
+            <a href="metodologia.html" class="nav-item">
+                <span class="nav-icon">🛠️</span>
+                <span class="nav-label">Metodología</span>
+            </a>
+            <a href="comunidad.html" class="nav-item active">
+                <span class="nav-icon">👥</span>
+                <span class="nav-label">Comunidad</span>
+            </a>
+            <a href="usuario.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Perfil</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <!-- SCRIPT DE INICIALIZACIÓN DEL TEMA (Evita el parpadeo blanco) -->
+    <script>
+    (function() {
+        try {
+            // Sistema de tema Bootstrap con data-bs-theme
+            var savedTheme = localStorage.getItem('themeMode');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // Determinar tema inicial
+            var initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+            
+            // Aplicar atributo nativo de Bootstrap inmediatamente
+            document.documentElement.setAttribute('data-bs-theme', initialTheme);
+            
+            // Mantener compatibilidad con clase existente
+            if (initialTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.remove('dark-theme');
+            }
+            
+            // Inicializar modo PC si existe
+            var savedViewMode = localStorage.getItem('neuromundo-view-mode');
+            if (savedViewMode === 'pc') {
+                document.documentElement.classList.add('pc-mode');
+                document.body.classList.add('pc-mode');
+                
+                var viewportMeta = document.querySelector('meta[name="viewport"]');
+                if (viewportMeta) {
+                    viewportMeta.setAttribute('content', 'width=1280, initial-scale=0.25');
+                }
+            }
+        } catch (e) { 
+            console.warn('localStorage no está disponible'); 
+            // Fallback a light mode
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+        }
+    })();
+    </script>
+</body>
+
+</html>

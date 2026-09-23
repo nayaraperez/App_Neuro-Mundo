@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroMundo</title>
+    <meta name="author" content="Neu Industries">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- ENCABEZADO FIJO -->
+        <header class="app-header">
+            <div class="header-top">
+            </div>
+            <div class="header-main">
+                <div class="app-brand">
+                    <div class="logo-wrapper">
+<img src="../images/Logo empresa.png" alt="Logo Oficial NeuroMundo" class="logo-app" loading="eager">
+                        <span class="online-pulse-dot" title="Ecosistema Activo"></span>
+                    </div>
+                    <div class="brand-text">
+                        <h1>Info</h1>
+                        <span class="brand-badge">CLINICAL & SUPPORT</span>
+                    </div>
+                </div>
+                <div class="app-right-brand">
+                    <!-- Conmutador de Modo Oscuro/Claro -->
+                    <button class="theme-toggle-animated" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema visual" title="Cambiar tema">
+                        <div class="icon-container">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </div>
+                        <span id="theme-text" class="btn-caption">Tema</span>
+                    </button>
+<!-- Conmutador Modo PC / Tablet -->
+<button class="view-toggle-btn" id="view-toggle" onclick="toggleViewMode()" aria-label="Cambiar a vista de escritorio" title="Alternar Layout">
+    <span class="view-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6h16v12H4V6zm2 2v8h12V8H6zm-4 4h2v2H2v-2zm18 0h2v2h-2v-2zM4 4h16V2H4v2zm0 16h16v-2H4v2z"/>
+        </svg>
+    </span>
+</button>
+
+                    <!-- Menú Desplegable Accesible de Notificaciones -->
+                    <div class="user-menu">
+                        <input type="checkbox" id="notif-check" class="notif-checkbox" aria-label="Desplegar notificaciones">
+                        <label for="notif-check" class="notification-btn" aria-label="Abrir centro de notificaciones" tabindex="0">
+                            <span class="bell-icon">🔔</span>
+                            <span class="badge" aria-label="Nueva notificación activa"></span>
+                        </label>
+                        <div class="user-menu-dropdown" role="region" aria-label="Panel de avisos">
+                            <div class="dropdown-header">
+                                <h5>Centro de Notificaciones</h5>
+                                <span class="notif-count">1 nueva</span>
+                            </div>
+                            <div class="menu-item unread">
+                                <span class="notif-icon">🌟</span>
+                                <div class="notif-text">
+                                    <strong>Nueva rutina visual agregada</strong>
+                                    <p>Técnicas de relajación táctil añadidas a Terapia.</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-footer">
+                                <button class="btn-link">Marcar todas como leídas</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="app-content">
+
+            <section class="welcome-card">
+                <h2 class="welcome-title">¡Hola! Nos alegra verte</h2>
+                <p class="welcome-subtitle">Tu entorno seguro, accesible e inclusivo</p>
+                <div class="speech-bubble">¿Qué quieres explorar hoy?</div>
+            </section>
+
+            <section class="search-section">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" placeholder="Buscar pictogramas, historias o herramientas...">
+                </div>
+            </section>
+
+            <div class="categories-scroll">
+    <button class="category-item active" data-category="inicio">
+        <span class="cat-icon">⭐</span>
+        <span class="cat-name">Inicio</span>
+    </button>
+    <button class="category-item" data-category="pictogramas">
+        <span class="cat-icon">🎨</span>
+        <span class="cat-name">Pictogramas</span>
+    </button>
+    <button class="category-item" data-category="regulacion">
+        <span class="cat-icon">🌱</span>
+        <span class="cat-name">Regulación</span>
+    </button>
+    <button class="category-item" data-category="rutinas">
+        <span class="cat-icon">📅</span>
+        <span class="cat-name">Rutinas</span>
+    </button>
+    <button class="category-item" data-category="copiloto">
+        <span class="cat-icon">🤖</span>
+        <span class="cat-name">Copiloto IA</span>
+    </button>
+    <button class="category-item" data-category="comunidad">
+        <span class="cat-icon">💬</span>
+        <span class="cat-name">Comunidad</span>
+    </button>
+</div>
+
+<div class="seccion-contenido">
+            <aside id="categoria-info" class="category-info-panel">
+                <div class="info-content-wrapper">
+                    <div class="info-header">
+                        <span class="info-pulse"></span>
+                        <h4 id="info-titulo">⭐ Vista General</h4>
+                    </div>
+                    <p id="info-descripcion">Selecciona una categoría arriba para acceder a las herramientas y recursos correspondientes.</p>
+                </div>
+            </aside>
+</div>
+
+            <section class="tools-section">
+                <h3 class="block-title">Herramientas Diarias</h3>
+
+                <div class="tool-card">
+                    <div class="tool-icon bg-blue">💬</div>
+                    <div class="tool-info">
+                        <h4>Tablero AAC de Comunicación</h4>
+                        <p>Expresa tus necesidades y emociones rápidamente mediante apoyos visuales.</p>
+                    </div>
+                    <span class="arrow-right">➔</span>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon bg-yellow">🧘</div>
+                    <div class="tool-info">
+                        <h4>Espacio de Calma y Descompresión</h4>
+                        <p>Ejercicios guiados de respiración, temporizadores y estímulos visuales.</p>
+                    </div>
+                    <span class="arrow-right">➔</span>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon bg-green">🎧</div>
+                    <div class="tool-info">
+                        <h4>Filtros Sensoriales y Audio</h4>
+                        <p>Frecuencias calmantes y ruido blanco orientados a momentos de sobrecarga.</p>
+                    </div>
+                    <span class="arrow-right">➔</span>
+                </div>
+            </section>
+
+            <section class="autonomia-section">
+                <h3 class="block-title">Módulos de Apoyo y Rutinas</h3>
+
+                <div class="tarjeta-modulo-app color-azul">
+                    <div class="encabezado-tarjeta-app">
+                        <span class="titulo-tarjeta-app">📅 Agenda Visual Diaria</span>
+                    </div>
+                    <p class="desc-tarjeta-app">Estructura las secuencias de tus actividades diarias paso a paso para
+                        reducir la ansiedad.</p>
+                    <button class="boton-app-primario">Ver mi día</button>
+                </div>
+
+                <div class="tarjeta-modulo-app color-morado">
+                    <div class="encabezado-tarjeta-app">
+                        <span class="titulo-tarjeta-app">🚦 Semáforo de Autorregulación</span>
+                    </div>
+                    <p class="desc-tarjeta-app">Identifica tu nivel de cansancio o sobrecarga y activa estrategias
+                        inmediatas de calma.</p>
+                    <button class="boton-app-primario">Explorar emociones</button>
+                </div>
+
+                <div class="tarjeta-modulo-app color-naranja">
+                    <div class="encabezado-tarjeta-app">
+                        <span class="titulo-tarjeta-app">🧩 Historias Sociales Ilustradas</span>
+                    </div>
+                    <p class="desc-tarjeta-app">Guías paso a paso para prepararte ante visitas médicas, cambios de
+                        rutina o imprevistos.</p>
+                    <button class="boton-app-primario">Leer historias</button>
+                </div>
+            </section>
+
+            <section class="metrics-section">
+                <div class="metrica-card">
+                    <span class="metrica-num">+85%</span>
+                    <span class="metrica-txt">Disminución de la frustración mediante el uso de agendas estructuradas y
+                        tableros visuales.</span>
+                </div>
+            </section>
+
+            <section class="case-section">
+                <h3 class="block-title">Evidencia y Experiencia</h3>
+                <div class="case-card">
+                    <span class="case-tag">✓ Validado por Especialistas</span>
+                    <p class="case-question">"¿Cómo facilita el semáforo emocional la adaptación a cambios?"</p>
+                    <p class="desc-tarjeta-app">Proporciona anticipación predecible, permitiendo al usuario tomar pausas
+                        conscientes antes de colapsar.</p>
+                </div>
+            </section>
+
+
+            <section class="articles-section">
+                <div class="section-header-flex">
+                    <h3 class="block-title">Recursos y Plantillas</h3>
+                    <a href="#" class="see-all">Ver todo</a>
+                </div>
+
+                <div class="feed-card">
+                    <span class="feed-tag tag-crisis">Guía de Apoyo</span>
+                    <div class="feed-body">
+                        <h4>Estrategias ante la sobrecarga sensorial</h4>
+                        <p>Pautas esenciales recomendadas por terapeutas ocupacionales para crear ambientes amigables.
+                        </p>
+                    </div>
+                    <div class="feed-footer">
+                        <span>⏱️ Lectura 3 min</span>
+                        <span>❤️ 142 Apoyos</span>
+                    </div>
+                </div>
+
+                <div class="feed-card feed-card-green">
+                    <span class="feed-tag tag-juego">Descargables</span>
+                    <div class="feed-body">
+                        <h4>Kit Imprimible de Rutina de Baño y Aseo</h4>
+                        <p>Plantilla visual en PDF lista para descargar y pegar en el hogar.</p>
+                    </div>
+                    <div class="feed-footer">
+                        <span>📄 Descarga PDF</span>
+                        <span>⭐ Destacado</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BANNER DE COMUNIDAD Y RED DE FAMILIAS -->
+            <section class="community-banner">
+                <div class="community-content">
+                    <h4>🤝 Red de Familias y Profesionales</h4>
+                    <p>Conéctate a un espacio seguro donde compartir experiencias, secuencias y tableros personalizados.
+                    </p>
+                    <button class="community-btn">Unirme a la comunidad</button>
+                </div>
+            </section>
+
+            <div class="scroll-spacing"></div>
+        </main>
+
+        <nav class="app-nav">
+            <a href="../../index.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Inicio</span>
+            </a>
+            <a href="proyecto.html" class="nav-item">
+                <span class="nav-icon">🚀</span>
+                <span class="nav-label">Proyecto</span>
+            </a>
+            <a href="../pages/metodologia.html" class="nav-item active">
+                <span class="nav-icon">🛠️</span>
+                <span class="nav-label">Metodología</span>
+            </a>
+            <a href="comunidad.html" class="nav-item">
+                <span class="nav-icon">👥</span>
+                <span class="nav-label">Comunidad</span>
+            </a>
+            <a href="usuario.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Perfil</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <!-- SCRIPT DE INICIALIZACIÓN DEL TEMA (Evita el parpadeo blanco) -->
+    <script>
+    (function() {
+        try {
+            // Sistema de tema Bootstrap con data-bs-theme
+            var savedTheme = localStorage.getItem('themeMode');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // Determinar tema inicial
+            var initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+            
+            // Aplicar atributo nativo de Bootstrap inmediatamente
+            document.documentElement.setAttribute('data-bs-theme', initialTheme);
+            
+            // Mantener compatibilidad con clase existente
+            if (initialTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.remove('dark-theme');
+            }
+            
+            // Inicializar modo PC si existe
+            var savedViewMode = localStorage.getItem('neuromundo-view-mode');
+            if (savedViewMode === 'pc') {
+                document.documentElement.classList.add('pc-mode');
+                document.body.classList.add('pc-mode');
+                
+                var viewportMeta = document.querySelector('meta[name="viewport"]');
+                if (viewportMeta) {
+                    viewportMeta.setAttribute('content', 'width=1280, initial-scale=0.25');
+                }
+            }
+        } catch (e) { 
+            console.warn('localStorage no está disponible'); 
+            // Fallback a light mode
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+        }
+    })();
+    </script>
+</body>
+
+</html>

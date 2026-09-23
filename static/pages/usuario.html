@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Mi Perfil</title>
+  <meta name="author" content="Neu Industries">
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- ENCABEZADO FIJO -->
+    <header class="app-header">
+            <div class="header-top">
+            </div>
+      <div class="header-main">
+        <div class="app-brand">
+                    <div class="logo-wrapper">
+<img src="../images/Logo empresa.png" alt="Logo Oficial NeuroMundo" class="logo-app" loading="eager">
+                        <span class="online-pulse-dot" title="Ecosistema Activo"></span>
+                    </div>
+          <div class="brand-text">
+            <h1>Mi cuenta</h1>
+            <span class="brand-badge">CLINICAL & SUPPORT</span>
+          </div>
+        </div>
+        <div class="app-right-brand">
+                    <!-- Conmutador de Modo Oscuro/Claro -->
+                    <button class="theme-toggle-animated" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema visual" title="Cambiar tema">
+                        <div class="icon-container">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </div>
+                        <span id="theme-text" class="btn-caption">Tema</span>
+                    </button>
+<!-- Conmutador Modo PC / Tablet -->
+<button class="view-toggle-btn" id="view-toggle" onclick="toggleViewMode()" aria-label="Cambiar a vista de escritorio" title="Alternar Layout">
+    <span class="view-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6h16v12H4V6zm2 2v8h12V8H6zm-4 4h2v2H2v-2zm18 0h2v2h-2v-2zM4 4h16V2H4v2zm0 16h16v-2H4v2z"/>
+        </svg>
+    </span>
+</button>
+
+                    <!-- Menú Desplegable Accesible de Notificaciones -->
+                    <div class="user-menu">
+                        <input type="checkbox" id="notif-check" class="notif-checkbox" aria-label="Desplegar notificaciones">
+                        <label for="notif-check" class="notification-btn" aria-label="Abrir centro de notificaciones" tabindex="0">
+                            <span class="bell-icon">🔔</span>
+                            <span class="badge" aria-label="Nueva notificación activa"></span>
+                        </label>
+                        <div class="user-menu-dropdown" role="region" aria-label="Panel de avisos">
+                            <div class="dropdown-header">
+                                <h5>Centro de Notificaciones</h5>
+                                <span class="notif-count">1 nueva</span>
+                            </div>
+                            <div class="menu-item unread">
+                                <span class="notif-icon">🌟</span>
+                                <div class="notif-text">
+                                    <strong>Nueva rutina visual agregada</strong>
+                                    <p>Técnicas de relajación táctil añadidas a Terapia.</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-footer">
+                                <button class="btn-link">Marcar todas como leídas</button>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENIDO DEL PERFIL -->
+    <main class="app-content">
+      <!-- TARJETA DE USUARIO PRINCIPAL -->
+      <section class="profile-card-top">
+        <div class="profile-avatar-big">👋</div>
+        <h2 class="profile-name">Mamá / Papá Protector</h2>
+        <p class="profile-email">familia.unida@email.com</p>
+        <div class="profile-badges-row">
+          <span class="user-badge-item badge-active">Miembro Activo</span>
+          <span class="user-badge-item badge-guide">Guía de Apoyo</span>
+        </div>
+      </section>
+
+      <!-- OPCIONES DEL MENÚ TIPO AJUSTES MÓVIL -->
+      <h3 class="block-title section-spacer">Configuraciones de la App</h3>
+
+      <section class="settings-list-group">
+        <div class="settings-list-item" onclick="alert('Configuración de alertas sensoriales')">
+          <div class="item-left">🔔 Notificaciones de Crisis</div>
+          <span class="item-arrow">➔</span>
+        </div>
+        <div class="settings-list-item" onclick="alert('Miembro de la comunidad verificado')">
+          <div class="item-left">🔒 Privacidad y Seguridad</div>
+          <span class="item-arrow">➔</span>
+        </div>
+        <div class="settings-list-item" onclick="alert('Contacto con soporte técnico')">
+          <div class="item-left">🤝 Solicitar Ayuda Técnica</div>
+          <span class="item-arrow">➔</span>
+        </div>
+        <div class="settings-list-item logout-item" onclick="location.href = '../../index.html'">
+          <div class="item-left">🚪 Cerrar Sesión Temporal</div>
+          <span class="item-arrow">➔</span>
+        </div>
+        <div class="settings-list-item switch-account-item" onclick="location.href = 'login.html'">
+          <div class="item-left">👤 Iniciar sesión con otra cuenta</div>
+          <span class="item-arrow">➔</span>
+        </div>
+      </section>
+
+      <div class="scroll-spacing"></div>
+    </main>
+
+    <!-- NAVEGACIÓN INFERIOR MÓVIL -->
+    <nav class="app-nav">
+      <a href="../../index.html" class="nav-item">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Inicio</span>
+      </a>
+      <a href="proyecto.html" class="nav-item">
+        <span class="nav-icon">🚀</span>
+        <span class="nav-label">Proyecto</span>
+      </a>
+      <a href="metodologia.html" class="nav-item">
+        <span class="nav-icon">🛠️</span>
+        <span class="nav-label">Metodología</span>
+      </a>
+      <a href="comunidad.html" class="nav-item">
+        <span class="nav-icon">👥</span>
+        <span class="nav-label">Comunidad</span>
+      </a>
+      <a href="../pages/usuario.html" class="nav-item active">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">Perfil</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="../js/script.js"></script>
+  <!-- SCRIPT DE INICIALIZACIÓN DEL TEMA (Evita el parpadeo blanco) -->
+    <script>
+    (function() {
+        try {
+            // Sistema de tema Bootstrap con data-bs-theme
+            var savedTheme = localStorage.getItem('themeMode');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // Determinar tema inicial
+            var initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+            
+            // Aplicar atributo nativo de Bootstrap inmediatamente
+            document.documentElement.setAttribute('data-bs-theme', initialTheme);
+            
+            // Mantener compatibilidad con clase existente
+            if (initialTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.remove('dark-theme');
+            }
+            
+            // Inicializar modo PC si existe
+            var savedViewMode = localStorage.getItem('neuromundo-view-mode');
+            if (savedViewMode === 'pc') {
+                document.documentElement.classList.add('pc-mode');
+                document.body.classList.add('pc-mode');
+                
+                var viewportMeta = document.querySelector('meta[name="viewport"]');
+                if (viewportMeta) {
+                    viewportMeta.setAttribute('content', 'width=1280, initial-scale=0.25');
+                }
+            }
+        } catch (e) { 
+            console.warn('localStorage no está disponible'); 
+            // Fallback a light mode
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+        }
+    })();
+    </script>
+</body>
+
+</html>

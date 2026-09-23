@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Proyecto NeuroMundo</title>
+    <meta name="author" content="Neu Industries">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body data-sensory="estandar">
+
+    <div class="app-container">
+
+        <!-- ENCABEZADO FIJO DE LA APP -->
+        <header class="app-header">
+            <div class="header-top">
+            </div>
+            <div class="header-main">
+                <div class="app-brand">
+                    <div class="logo-wrapper">
+<img src="../images/Logo empresa.png" alt="Logo Oficial NeuroMundo" class="logo-app" loading="eager">
+                        <span class="online-pulse-dot" title="Ecosistema Activo"></span>
+                    </div>
+                    <div class="brand-text">
+                        <h1>Diagnóstico Social</h1>
+                        <span class="brand-badge">CLINICAL & SUPPORT</span>
+                    </div>
+                </div>
+                <div class="app-right-brand">
+                    <!-- Conmutador de Modo Oscuro/Claro -->
+                    <button class="theme-toggle-animated" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema visual" title="Cambiar tema">
+                        <div class="icon-container">
+                            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </div>
+                        <span id="theme-text" class="btn-caption">Tema</span>
+                    </button>
+<!-- Conmutador Modo PC / Tablet -->
+<button class="view-toggle-btn" id="view-toggle" onclick="toggleViewMode()" aria-label="Cambiar a vista de escritorio" title="Alternar Layout">
+    <span class="view-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6h16v12H4V6zm2 2v8h12V8H6zm-4 4h2v2H2v-2zm18 0h2v2h-2v-2zM4 4h16V2H4v2zm0 16h16v-2H4v2z"/>
+        </svg>
+    </span>
+</button>
+
+                    <!-- Menú Desplegable Accesible de Notificaciones -->
+                    <div class="user-menu">
+                        <input type="checkbox" id="notif-check" class="notif-checkbox" aria-label="Desplegar notificaciones">
+                        <label for="notif-check" class="notification-btn" aria-label="Abrir centro de notificaciones" tabindex="0">
+                            <span class="bell-icon">🔔</span>
+                            <span class="badge" aria-label="Nueva notificación activa"></span>
+                        </label>
+                        <div class="user-menu-dropdown" role="region" aria-label="Panel de avisos">
+                            <div class="dropdown-header">
+                                <h5>Centro de Notificaciones</h5>
+                                <span class="notif-count">1 nueva</span>
+                            </div>
+                            <div class="menu-item unread">
+                                <span class="notif-icon">🌟</span>
+                                <div class="notif-text">
+                                    <strong>Nueva rutina visual agregada</strong>
+                                    <p>Técnicas de relajación táctil añadidas a Terapia.</p>
+                                </div>
+                            </div>
+                            <div class="menu-item-footer">
+                                <button class="btn-link">Marcar todas como leídas</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- ÁREA SCROLLEABLE -->
+        <main class="app-content">
+
+            <!-- ==========================================
+                 PÁGINA 2: EL PROYECTO (SOBRE NEUROMUNDO)
+                 ========================================== -->
+            <section class="seccion-pagina-proyecto">
+
+                <!-- FICHA TÉCNICA PRINCIPAL / HERO TRANSLÚCIDO -->
+                <section class="glass-hero">
+                    <span class="glass-hero-badge" id="proy-badge-hero">Propuesta de Valor</span>
+                    <h2 class="glass-hero-title" id="proy-title-hero">Neuro Mundo App</h2>
+                    <p class="glass-hero-desc" id="proy-desc-hero">
+                        Una solución digital interactiva diseñada para conectar a la persona neurodivergente, su familia y
+                        los entornos que frecuenta bajo un mismo lenguaje visual accesibilizado.
+                    </p>
+
+                    <!-- PÍLDORAS DE PROPIEDADES -->
+                    <div class="feature-pill-list">
+                        <span class="feature-pill" id="pill-1">✨ Interfaz Limpia</span>
+                        <span class="feature-pill" id="pill-2">💬 Pictogramas</span>
+                        <span class="feature-pill" id="pill-3">🛡️ Cero Distractores</span>
+                    </div>
+                </section>
+
+                <!-- BLOQUES INFORMATIVOS DE PROPÓSITO / EJES -->
+                <section class="ejes-container">
+                    <h3 class="block-title" id="proy-sec-title">Ejes Fundamentales</h3>
+
+                    <div class="eje-card">
+                        <span class="eje-icon">🤝</span>
+                        <div class="eje-text">
+                            <h4 id="eje1-title">Puente de Comunicación</h4>
+                            <p id="eje1-desc">Facilita el diálogo entre terapeutas, educadores y cuidadores.</p>
+                        </div>
+                    </div>
+
+                    <div class="eje-card">
+                        <span class="eje-icon">🌿</span>
+                        <div class="eje-text">
+                            <h4 id="eje2-title">Prevención y Calma</h4>
+                            <p id="eje2-desc">Anticipa situaciones de sobrecarga mediante rutinas ajustables.</p>
+                        </div>
+                    </div>
+
+                    <div class="eje-card">
+                        <span class="eje-icon">🎯</span>
+                        <div class="eje-text">
+                            <h4 id="eje3-title">Inclusión Autónoma</h4>
+                            <p id="eje3-desc">Promueve la toma de decisiones y el desarrollo de rutinas propias.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+
+            <!-- SEPARADOR VISUAL DE TRANSICIÓN ENTRE PÁGINAS -->
+            <div class="bloque-separador-secciones" style="margin: 25px 0 15px 0; position: relative; text-align: center;">
+                <hr style="border: none;">
+            </div>
+
+            <!-- ==========================================
+                 PÁGINA 1: PROBLEMÁTICA (DIAGNÓSTICO SOCIAL)
+                 ========================================== -->
+            <section class="seccion-pagina-problematica">
+
+                <!-- TITULAR PRINCIPAL -->
+                <div style="margin-bottom: 16px;">
+                    <h2 style="font-size: 1.3rem; font-weight: 800; color: var(--bg-dark-blue);" id="prob-hero-title">El
+                        Desafío en Cifras y Vivencias</h2>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;" id="prob-hero-sub">
+                        Identificamos los puntos donde el entorno urbano y social genera barreras invisibles.</p>
+                </div>
+
+                <!-- BENTO GRID ASIMÉTRICO -->
+                <section class="bento-container">
+
+                    <!-- Tarjeta Principal (Ancha) -->
+                    <div class="bento-card wide">
+                        <div>
+                            <span class="bento-tag tag-warning" id="tag-bento-1">Factor Principal</span>
+                            <h3 style="font-size: 1rem; margin-top: 6px; color: var(--text-main);" id="title-bento-1">
+                                Sobrecarga Sensorial Impredecible</h3>
+                        </div>
+                        <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 8px; line-height: 1.4;"
+                            id="desc-bento-1">
+                            Estímulos auditivos y luminosos descontrolados en espacios públicos derivan en agotamiento
+                            mental y desregulación.
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta Cuadrada Destacada Oscura -->
+                    <div class="bento-card featured">
+                        <span class="bento-tag tag-light" id="tag-bento-2">Impacto</span>
+                        <span style="font-size: 2rem; font-weight: 800; margin: 8px 0; color: var(--accent-yellow);"
+                            id="num-bento-2">8/10</span>
+                        <p style="font-size: 0.72rem; opacity: 0.9; line-height: 1.3;" id="desc-bento-2">Familias evitan
+                            lugares concurridos por falta de adaptación.</p>
+                    </div>
+
+                    <!-- Tarjeta Cuadrada Clara -->
+                    <div class="bento-card">
+                        <span class="bento-tag tag-primary" id="tag-bento-3">Comunicación</span>
+                        <span style="font-size: 2rem; font-weight: 800; color: var(--bg-dark-blue); margin: 8px 0;"
+                            id="num-bento-3">75%</span>
+                        <p style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.3;" id="desc-bento-3">
+                            Requiere apoyos visuales y pictogramas estandarizados.</p>
+                    </div>
+
+                    <!-- Tarjeta Ancha Secundaria -->
+                    <div class="bento-card wide" style="background: var(--card-background);">
+                        <span class="bento-tag tag-success" id="tag-bento-4">Entorno Escolar y Social</span>
+                        <h4 style="font-size: 0.95rem; margin-top: 6px; color: var(--text-main);" id="title-bento-4">
+                            Carencia de Zonas de Calma</h4>
+                        <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; line-height: 1.4;"
+                            id="desc-bento-4">
+                            Pocos establecimientos cuentan con espacios de descompresión cognitiva diseñados para recuperar el
+                            balance emocional.
+                        </p>
+                    </div>
+
+                </section>
+
+                <!-- SECCIÓN COMPLEMENTARIA DE BARRERAS CLAVE -->
+                <section class="problematica-extra-section" style="margin-top: 20px;">
+                    <h3 class="block-title">Barreras Invisibles Más Comunes</h3>
+
+            <!-- SEPARADOR VISUAL DE TRANSICIÓN ENTRE PÁGINAS -->
+            <div class="bloque-separador-secciones" style="margin: 15px 0 5px 0; position: relative; text-align: center;">
+                <hr style="border: none;">
+            </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon bg-yellow">🔊</div>
+                        <div class="tool-info">
+                            <h4>Contaminación Acústica</h4>
+                            <p>Alarmas, sirenas y aglomeraciones sin áreas alternas de silencio.</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-icon bg-blue">🧩</div>
+                        <div class="tool-info">
+                            <h4>Señalética Compleja</h4>
+                            <p>Instrucciones de orientación ambiguas sin soporte pictográfico.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+        </main>
+
+        <!-- NAVEGACIÓN INFERIOR FIJA -->
+        <nav class="app-nav">
+            <a href="../../index.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Inicio</span>
+            </a>
+            <a href="../pages/proyecto.html" class="nav-item active">
+                <span class="nav-icon">🚀</span>
+                <span class="nav-label">Proyecto</span>
+            </a>
+            <a href="metodologia.html" class="nav-item">
+                <span class="nav-icon">🛠️</span>
+                <span class="nav-label">Metodología</span>
+            </a>
+            <a href="comunidad.html" class="nav-item">
+                <span class="nav-icon">👥</span>
+                <span class="nav-label">Comunidad</span>
+            </a>
+            <a href="usuario.html" class="nav-item">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Perfil</span>
+            </a>
+        </nav>
+
+    </div>
+
+    <script src="../js/script.js"></script>
+    <!-- SCRIPT DE INICIALIZACIÓN DEL TEMA (Evita el parpadeo blanco) -->
+    <script>
+    (function() {
+        try {
+            // Sistema de tema Bootstrap con data-bs-theme
+            var savedTheme = localStorage.getItem('themeMode');
+            var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            // Determinar tema inicial
+            var initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+            
+            // Aplicar atributo nativo de Bootstrap inmediatamente
+            document.documentElement.setAttribute('data-bs-theme', initialTheme);
+            
+            // Mantener compatibilidad con clase existente
+            if (initialTheme === 'dark') {
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.remove('dark-theme');
+            }
+            
+            // Inicializar modo PC si existe
+            var savedViewMode = localStorage.getItem('neuromundo-view-mode');
+            if (savedViewMode === 'pc') {
+                document.documentElement.classList.add('pc-mode');
+                document.body.classList.add('pc-mode');
+                
+                var viewportMeta = document.querySelector('meta[name="viewport"]');
+                if (viewportMeta) {
+                    viewportMeta.setAttribute('content', 'width=1280, initial-scale=0.25');
+                }
+            }
+        } catch (e) { 
+            console.warn('localStorage no está disponible'); 
+            // Fallback a light mode
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+        }
+    })();
+    </script>
+</body>
+
+</html>
